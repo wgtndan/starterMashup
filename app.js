@@ -8,6 +8,17 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var qlikauth = require('./qlik-auth');
+
+var configName = path.join(process.cwd(), 'config.js');
+var configDetails = require(configName);
+var profile = configDetails.Profile;
+
+const certificateDir = configDetails.certificateDir;
+const qlikProxyName = configDetails.QlikConfig.prefix;
+const qlikServerName = configDetails.QlikConfig.host;
+const qlikProtocol =  "https://";
+
 var app = express();
 
 // view engine setup
@@ -22,8 +33,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/javascripts/qlikConfigure.js',function(req, res) {
+    var configString = "var config = {host: '" + configDetails.QlikConfig.host + "',prefix: '" + configDetails.QlikConfig.prefix +"',port: "+ (configDetails.QlikConfig.secure ? 443 : 80 ) + ", isSecure: " +(configDetails.QlikConfig.secure ? "true" : "false" ) +"};";
+    configString += "var AppId = '" + configDetails.appUID + "';";
+    configString += "var VisId = '" + configDetails.VisualisationUID + "';";
+    // res.send("var config = {host: 'nzwel-extadn1',prefix: '/tick/',port: 443, isSecure: true};");
+    res.send(configString);
+});
+
+app.get('/getTicket', function(req, res) {
+    //Call Ticket API here
+      var options={
+        ProxyRestUri:(configDetails.QlikConfig.secure ? "https://" : "http://" ) + qlikServerName + ':4243/qps' + qlikProxyName,
+        TargetId:'',//http://' + configDetails.EngineConnectHost + ':' + configDetails.EngineConnectPort,
+        Certificate: certificateDir + '\\client.pfx',
+        PassPhrase: ''
+      };
+      //Make call for ticket request
+      console.log(options);
+      var ticketResult = qlikauth.requestTicket(req, res, profile,options);
+});
+
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

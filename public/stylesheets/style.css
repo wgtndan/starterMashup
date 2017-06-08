@@ -1,8 +1,40 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.panel {
+    margin-bottom: 0px;
 }
 
-a {
-  color: #00B7FF;
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important; 
+}
+
+#currsel{
+  height: 56px;  
+  padding-top:20px;
+  }
+.resultDiv {
+  height: -webkit-calc(100vh - 280px);
+  height: -moz-calc(100vh -280);
+  height: calc(100vh - 280px);
+} 
+
+.fullHeight{
+  height: -webkit-calc(100vh - 331px);
+  height: -moz-calc(100vh -331);
+  height: calc(100vh - 331px);
+}
+
+#fieldSelectForm > div.panel-body{
+  padding-bottom: 0px;
+}
+ #resultsSelectForm > div.resultDiv{
+   padding:0px;
+ }
+ .qv-global-selections{
+   width:90% !important;
+ }
+ .qv-global-selections .qv-gs-header .lui-checkbox {
+   display:none !important;
+ }
+h4{
+  margin:0;
 }

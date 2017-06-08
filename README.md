@@ -32,3 +32,8 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgments
+
+* Big thanks too **Rikard Braathen** - For developing [Qlik-Auth](https://github.com/braathen/qlik-auth) that I've modified and utilised here - [braathen](https://github.com/braathen)
+

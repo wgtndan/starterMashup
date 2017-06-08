@@ -10,7 +10,7 @@ var _ = require("underscore");
 function getFileRealPath(s) {
     try {
         var result = fs.realpathsync(s);
-        console.log(result);
+        // console.log(result);
         return result;
     } catch (e) {
         return null;
@@ -88,7 +88,6 @@ module.exports = {
         options.ProxyRestUri = options.ProxyRestUri || url.parse(req.url, true).query.proxyRestUri;
         options.TargetId = options.TargetId || url.parse(req.url, true).query.targetId || null;
 
-        console.log(options.TargetId);
         
         if (global.qlikAuthSession) {
             options.ProxyRestUri = global.qlikAuthSession.proxyRestUri;
@@ -233,7 +232,7 @@ module.exports = {
         //Send session request
         var sessionreq = https.request(settings, function (sessionres) {
             sessionres.on('data', function (d) {
-                console.log(JSON.parse(d.toString()));
+                // console.log(JSON.parse(d.toString()));
                 res.write(d);
                 res.end();
             });

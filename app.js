@@ -50,7 +50,6 @@ app.get('/getTicket', function(req, res) {
         PassPhrase: ''
       };
       //Make call for ticket request
-      console.log(options);
       var ticketResult = qlikauth.requestTicket(req, res, profile,options);
 });
 

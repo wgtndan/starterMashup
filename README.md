@@ -4,10 +4,10 @@ This is a quick mashup sample to give you some ideas and comfort about how to ea
 
 ## Getting Started
 
-Export Certificates from Qlik (required for Ticket Authentication Communications)
-Move Cert Files to a location that the user running Node.JS can access, i.e. starterMashup app.js location/Certificates
-Update config.js with values that work for your environment
-Execute the Node app
+* Export Certificates from Qlik (required for Ticket Authentication Communications)
+* Move Cert Files to a location that the user running Node.JS can access, i.e. starterMashup app.js location/Certificates
+* Update config.js with values that work for your environment
+* Execute the Node app
 
 ```
 node .\bin\www
@@ -15,9 +15,9 @@ node .\bin\www
 
 ### Prerequisites
 
-Node.JS
-A functional Qlik Sense implementation
-Certificates Exported from Qlik Sense
+* Node.JS
+* A functional Qlik Sense implementation
+* Certificates Exported from Qlik Sense
 
 ## Contributing
 
